@@ -29,4 +29,16 @@ class MeasurementTest {
         assertTrue(result);
     }
 
+    @Test
+    public void shouldFailForDifferentReading() {
+        final int value1 = 1;
+        final int value2 = 3;
+        final String unit = "CM";
+        final Measurement measurement1 = new Measurement(value1, unit);
+        final Measurement measurement2 = new Measurement(value2, unit);
+
+        boolean result = measurement1.equals(measurement2);
+
+        assertFalse(result);
+    }
 }
