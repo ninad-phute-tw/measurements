@@ -1,10 +1,10 @@
-package org.example;
+package org.tw.bootcamp;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Measurement {
+public class Length {
 
     private final Map<UnitPair, Double> conversionMap = new HashMap<>();
 
@@ -12,7 +12,7 @@ public class Measurement {
 
     private final String unit;
 
-    public Measurement(double value, String unit) {
+    public Length(double value, String unit) {
         prepareMap();
         this.value = value;
         this.unit = unit;
@@ -30,11 +30,11 @@ public class Measurement {
         if (obj == this) {
             return true;
         }
-        if (obj instanceof Measurement) {
-            Measurement measurement = (Measurement) obj;
-            UnitPair pair = new UnitPair(measurement.getUnit(), this.unit);
+        if (obj instanceof Length) {
+            Length length = (Length) obj;
+            UnitPair pair = new UnitPair(length.getUnit(), this.unit);
             return this.getValue() ==
-                    measurement.getValue() * conversionMap.get(pair);
+                    length.getValue() * conversionMap.get(pair);
         }
         return false;
     }
@@ -44,8 +44,8 @@ public class Measurement {
         return Objects.hash(value, unit);
     }
 
-    public boolean same(Measurement measurement) {
-        return this == measurement;
+    public boolean same(Length length) {
+        return this == length;
     }
 
     public double getValue() {
@@ -56,10 +56,10 @@ public class Measurement {
         return unit;
     }
 
-    public Measurement add(Measurement measurement) {
-        UnitPair pair = new UnitPair(measurement.getUnit(), this.getUnit());
+    public Length add(Length length) {
+        UnitPair pair = new UnitPair(length.getUnit(), this.getUnit());
         double result = this.getValue()
-                + measurement.getValue() * conversionMap.get(pair);
-        return new Measurement(result, this.getUnit());
+                + length.getValue() * conversionMap.get(pair);
+        return new Length(result, this.getUnit());
     }
 }
