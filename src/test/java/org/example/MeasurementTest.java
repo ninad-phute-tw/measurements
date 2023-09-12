@@ -13,9 +13,7 @@ class MeasurementTest {
         final Measurement measurement1 = new Measurement(value, unit);
         final Measurement measurement2 = new Measurement(value, unit);
 
-        boolean result = measurement1.equals(measurement2);
-
-        assertTrue(result);
+        assertEquals(measurement1, measurement2);
     }
 
     @Test
@@ -38,9 +36,7 @@ class MeasurementTest {
         final Measurement measurement1 = new Measurement(value1, unit);
         final Measurement measurement2 = new Measurement(value2, unit);
 
-        boolean result = measurement1.equals(measurement2);
-
-        assertFalse(result);
+        assertNotEquals(measurement1, measurement2);
     }
 
     @Test
@@ -65,9 +61,7 @@ class MeasurementTest {
         final Measurement measurement1 = new Measurement(value1, unit1);
         final Measurement measurement2 = new Measurement(value2, unit2);
 
-        boolean result = measurement1.equals(measurement2);
-
-        assertTrue(result);
+        assertEquals(measurement1, measurement2);
     }
 
     @Test
@@ -79,9 +73,7 @@ class MeasurementTest {
         final Measurement measurement1 = new Measurement(value1, unit1);
         final Measurement measurement2 = new Measurement(value2, unit2);
 
-        boolean result = measurement1.equals(measurement2);
-
-        assertTrue(result);
+        assertEquals(measurement1, measurement2);
     }
 
     @Test
@@ -93,9 +85,7 @@ class MeasurementTest {
         final Measurement measurement1 = new Measurement(value1, unit1);
         final Measurement measurement2 = new Measurement(value2, unit2);
 
-        boolean result = measurement1.equals(measurement2);
-
-        assertFalse(result);
+        assertNotEquals(measurement1, measurement2);
     }
 
     @Test
@@ -107,8 +97,6 @@ class MeasurementTest {
         final Measurement measurement1 = new Measurement(value1, unit1);
         final Measurement measurement2 = new Measurement(value2, unit2);
 
-        boolean result = measurement1.equals(measurement2);
-
-        assertFalse(result);
+        assertNotEquals(measurement1, measurement2);
     }
 }
