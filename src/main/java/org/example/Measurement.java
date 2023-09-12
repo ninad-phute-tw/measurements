@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Measurement {
 
     private final int value;
@@ -11,9 +13,21 @@ public class Measurement {
         this.unit = unit;
     }
 
-    public boolean equals(Measurement measurement) {
-        return this.getValue() == measurement.getValue()
-                && this.getUnit().equals(measurement.getUnit());
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof Measurement) {
+            Measurement measurement = (Measurement) obj;
+            return this.getCentimeterValue() == measurement.getCentimeterValue();
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, unit);
     }
 
     public boolean same(Measurement measurement) {
@@ -26,5 +40,12 @@ public class Measurement {
 
     public String getUnit() {
         return unit;
+    }
+
+    public int getCentimeterValue() {
+        if (this.getUnit().equals("M")) {
+            return this.getValue() * 100;
+        }
+        return this.getValue();
     }
 }

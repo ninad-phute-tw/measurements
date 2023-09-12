@@ -22,9 +22,10 @@ class MeasurementTest {
     public void shouldBeTrueForSameReading() {
         final int value = 1;
         final String unit = "CM";
-        final Measurement measurement = new Measurement(value, unit);
+        final Measurement measurement1 = new Measurement(value, unit);
+        final Measurement measurement2 = measurement1;
 
-        boolean result = measurement.same(measurement);
+        boolean result = measurement1.same(measurement2);
 
         assertTrue(result);
     }
@@ -51,6 +52,62 @@ class MeasurementTest {
         final Measurement measurement2 = new Measurement(value2, unit);
 
         boolean result = measurement1.same(measurement2);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void shouldEvaluateToTrueFor1mEqualTo100cm() {
+        final int value1 = 1;
+        final String unit1 = "M";
+        final int value2 = 100;
+        final String unit2 = "CM";
+        final Measurement measurement1 = new Measurement(value1, unit1);
+        final Measurement measurement2 = new Measurement(value2, unit2);
+
+        boolean result = measurement1.equals(measurement2);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void shouldEvaluateToTrueFor100cmEqualTo1m() {
+        final int value1 = 100;
+        final String unit1 = "CM";
+        final int value2 = 1;
+        final String unit2 = "M";
+        final Measurement measurement1 = new Measurement(value1, unit1);
+        final Measurement measurement2 = new Measurement(value2, unit2);
+
+        boolean result = measurement1.equals(measurement2);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void shouldEvaluateToFalseFor1mEqualTo10cm() {
+        final int value1 = 1;
+        final String unit1 = "M";
+        final int value2 = 10;
+        final String unit2 = "CM";
+        final Measurement measurement1 = new Measurement(value1, unit1);
+        final Measurement measurement2 = new Measurement(value2, unit2);
+
+        boolean result = measurement1.equals(measurement2);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void shouldEvaluateToFalseFor10cmEqualTo1m() {
+        final int value1 = 10;
+        final String unit1 = "CM";
+        final int value2 = 1;
+        final String unit2 = "M";
+        final Measurement measurement1 = new Measurement(value1, unit1);
+        final Measurement measurement2 = new Measurement(value2, unit2);
+
+        boolean result = measurement1.equals(measurement2);
 
         assertFalse(result);
     }
